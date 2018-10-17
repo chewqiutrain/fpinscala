@@ -1,0 +1,24 @@
+scalac MyModule.scala
+compile
+run
+scala MyModule
+run MyModule
+scala
+console
+compile
+console
+import fpinscala console
+console
+run helloworld
+run fs2_play/helloworld
+exit
+basicapp/run
+basicapp
+exit
+basicapp
+inspect run
+run
+exit
+basicapp/run
+run
+exit
