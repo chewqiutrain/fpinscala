@@ -15,19 +15,22 @@ sealed trait Either[+E, +A] {
   def flatMap[EE >: E, B](f: A => Either[EE, B]): Either[EE, B] = {
     this match {
       case Left(e) => Left(e)
-      case Right(a) => f(a) match {
-        case Left(e2) => Left(e2)
-        case Right(a2) => Right(a2)
-      }
+      case Right(a) => f(a)
     }
   }
 
   def orElse[EE >: E, B >: A](b: => Either[EE, B]): Either[EE, B] = {
-    ???
+    this match {
+      case Right(x) => Right(x)
+      case Left(_) => b
+    }
   }
 
   def map2[EE >: E, B, C](b: Either[EE, B])(f: (A, B) => C): Either[EE, C] = {
-    ???
+    for {
+      a1 <- this
+      b1 <- b
+    } yield f(a1,b1)
   }
 
 }
@@ -52,5 +55,15 @@ object Either {
   def Try[A](a: => A): Either[Exception, A] = {
     try Right(a)
     catch { case e: Exception => Left(e) }
+  }
+
+  //Exercise 4.7
+  def sequence[E, A](es: List[Either[E, A]]): Either[E, List[A]] = {
+    ???
+  }
+
+  // try and use map2
+  def traverse[E, A, B](as: List[A])(f: A => Either[E, B]): Either[E, List[B]] = {
+
   }
 }

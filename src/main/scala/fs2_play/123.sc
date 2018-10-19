@@ -18,3 +18,6 @@ x.compile.toVector.unsafeRunSync().flatten
 
 val l: List[Either[String, Int]] = List(Right(1), Left("error"), Left("Hello"), Right(42), Left("piggy"))
 l.separate
+
+
+val l3 = l1 :: l2
