@@ -4,7 +4,7 @@
 		module="fpinscala_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20181010091744"
+		publication="20181112133558"
 	>
 		<description>
 		fpinscala
@@ -32,6 +32,7 @@
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.12.4" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.12.4" conf="scala-tool->default,optional(default);compile->default(compile)"/>
+		<dependency org="org.scalacheck" name="scalacheck_2.12" rev="1.13.4" conf="test->default(compile)"/>
 		<dependency org="co.fs2" name="fs2-core_2.12" rev="0.10.4" conf="compile->default(compile)"/>
 		<dependency org="co.fs2" name="fs2-io_2.12" rev="0.10.4" conf="compile->default(compile)"/>
 		<dependency org="org.typelevel" name="cats-core_2.12" rev="1.4.0" conf="compile->default(compile)"/>

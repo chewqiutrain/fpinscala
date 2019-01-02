@@ -59,11 +59,19 @@ object Either {
 
   //Exercise 4.7
   def sequence[E, A](es: List[Either[E, A]]): Either[E, List[A]] = {
-    ???
+    def helper = (acc: Either[E, List[A]], elem: Either[E, A]) =>
+      acc match {
+        case Left(e) => Left(e)
+        case Right(listA) => elem match {
+          case Left(e2) => Left(e2)
+          case Right(a) => Right(listA ++ List(a))
+        }
+      }
+    es.foldLeft[Either[E, List[A]]](Right(List.empty[A]))(helper)
   }
 
   // try and use map2
   def traverse[E, A, B](as: List[A])(f: A => Either[E, B]): Either[E, List[B]] = {
-
+    sequence(as.map(f))
   }
 }
